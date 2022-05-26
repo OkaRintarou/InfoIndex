@@ -61,8 +61,9 @@ class VectorSpaceModel(private val invertedIndex: InvertedIndex) {
     /**
      * 输出结果
      * @param count 最大输出数
+     * @param lines 预览输出行数
      */
-    fun showInfo(count: Int) {
+    fun showInfo(count: Int,lines:Int) {
         val l = min(count, results.size)
         for (i in 0 until l) {
             val result = results[i]
@@ -72,8 +73,12 @@ class VectorSpaceModel(private val invertedIndex: InvertedIndex) {
             println("Property:")
             println(record)
             println()
-            println("Content:")
-            println(File(record.filePath).readText())
+            println("Content Preview:")
+            val readLines = File(record.filePath).readLines()
+            val maxLine = min(readLines.size,lines)
+            for (line in 0 until maxLine){
+                println(readLines[line])
+            }
             println("-".repeat(30))
         }
     }
