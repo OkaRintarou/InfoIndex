@@ -41,8 +41,10 @@ fun main() {
         println("Input keywords:(### for exit)")
         val keywords = readln()
         if (keywords == "###") break
+        println("Max records for preview:")
+        val num= readln().toInt()
         vectorSpaceModel.search(keywords)
-        vectorSpaceModel.showInfo(10)
+        vectorSpaceModel.showInfo(num)
     }
     println("Exit.")
 }
