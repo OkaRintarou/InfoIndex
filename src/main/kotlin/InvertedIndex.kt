@@ -44,9 +44,8 @@ class InvertedIndex {
         val list = ArrayList<Record>(count)
         for (i in 0 until count) {
             val fp = File("$fileFolder\\$i.property")
-            val properties =
-                fp.readText().split(" ").filter { it.isNotBlank() }
-            list.add(Record(properties[0], properties[1], properties[2], properties[3].trim()))
+            val lines = fp.readLines()
+            list.add(Record(lines[0].trim(), lines[1].trim(), lines[2].trim(), lines[3].trim()))
         }
         return list
     }
